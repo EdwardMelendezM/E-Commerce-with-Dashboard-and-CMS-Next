@@ -1,11 +1,16 @@
 'use client'
 
-import * as z from "zod";
-import { useForm } from "react-hook-form";
+import { useState } from "react";
+import axios from "axios";
 
+import { useForm } from "react-hook-form";
+import { toast } from 'react-hot-toast'
+import * as z from "zod";
+
+import { zodResolver } from "@hookform/resolvers/zod"
 import { useStoreModal } from "@/hooks/use-store-modal";
+
 import { Modal } from "@/components/ui/modal";
-import {zodResolver} from "@hookform/resolvers/zod"
 import {
   Form,
   FormControl,
@@ -14,11 +19,10 @@ import {
   FormLabel,
   FormMessage
 } from "@/components/ui/form";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import axios from "axios";
-import { toast } from 'react-hot-toast'
+
 
 // Estructura necesaria para el form con zod
 const formSchema = z.object({
