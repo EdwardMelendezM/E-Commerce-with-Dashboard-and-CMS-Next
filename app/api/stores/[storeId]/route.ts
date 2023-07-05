@@ -2,6 +2,8 @@ import prismadb from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs"
 import { NextResponse } from "next/server"
 
+
+// PATH
 export async function PATCH(
   req:Request,
   { params } : {params:{storeId:string}}
