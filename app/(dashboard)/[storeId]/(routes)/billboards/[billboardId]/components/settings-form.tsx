@@ -11,7 +11,7 @@ import axios from 'axios'
 import Heading from "@/components/heading";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Store } from "@prisma/client";
+import { Billboard, Store } from "@prisma/client";
 
 
 import {
@@ -29,17 +29,17 @@ import AlertModal from '@/components/modals/alert-modal';
 import { ApiAlert } from '@/components/ui/api-alert';
 import { useOrigin } from '@/hooks/use-origin';
 
-interface SettingsFormProps{
-  initialData:Store
+interface BillboardFormProps{
+  initialData:Billboard | null
 }
 
 const formSchema  = z.object({
   name:z.string().min(1)
 })
 
-type SettingsFormValues = z.infer<typeof formSchema>;
+type BillboardForm = z.infer<typeof formSchema>;
 
-const SettingsForm:React.FC<SettingsFormProps> = ({
+const BillboardForm:React.FC<BillboardFormProps> = ({
   initialData
 }) => {
 
@@ -51,12 +51,12 @@ const SettingsForm:React.FC<SettingsFormProps> = ({
 
   const origin = useOrigin()
 
-  const form = useForm<SettingsFormValues>({
+  const form = useForm<BillboardForm>({
     resolver:zodResolver(formSchema),
     defaultValues:initialData
   });
 
-  const onSubmit= async (data:SettingsFormValues)=>{
+  const onSubmit= async (data:BillboardForm)=>{
     try {
       setLoading(true)
       await axios.patch(`/api/stores/${params.storeId}`,data)
@@ -154,4 +154,4 @@ const SettingsForm:React.FC<SettingsFormProps> = ({
    );
 }
  
-export default SettingsForm;
+export default BillboardForm;
