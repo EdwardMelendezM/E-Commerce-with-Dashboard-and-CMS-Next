@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
 
-import { BillboardColumn } from "./columns"
+import { OrderColumn } from "./columns"
 import { Button } from "@/components/ui/button"
 import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react"
 import { useParams, useRouter } from 'next/navigation'
@@ -19,7 +19,7 @@ import { useState } from 'react'
 import AlertModal from '@/components/modals/alert-modal'
 
 interface CellActionProps{
-  data:BillboardColumn
+  data:OrderColumn
 }
 
 
