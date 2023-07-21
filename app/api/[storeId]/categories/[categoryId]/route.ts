@@ -15,9 +15,12 @@ export async function GET(
       return new NextResponse('CategoryId id is required', { status: 400 })
     }
 
-    const category = await prismadb.category.findMany({
+    const category = await prismadb.category.findFirst({
       where: {
         id: params.categoryId,
+      },
+      include:{
+        billboard:true,
       }
     })
 
@@ -115,7 +118,8 @@ export async function DELETE(
     const category = await prismadb.category.deleteMany({
       where: {
         id: params.categoryId,
-      }
+      },
+      
     })
 
     return NextResponse.json(category)
