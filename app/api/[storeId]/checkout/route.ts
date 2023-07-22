@@ -51,7 +51,7 @@ export async function POST(
   const order = await prismadb.order.create({
     data:{
       storeId: params.storeId,
-      isPaid:true,
+      isPaid:false,
       orderItems: {
         create: productIds.map((productId:string)=>({
           product: {
@@ -79,7 +79,7 @@ export async function POST(
   })
 
 
-  return  NextResponse.json({ url:session.url },{
+  return  NextResponse.json({ url: session.url },{
     headers:corsHeader
   })
 }
