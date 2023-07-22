@@ -20,7 +20,7 @@ The proyect is done
 
 1. Clone this repository
 2. Install all dependencies
-````
+```
   npm install
 ```
 3. Create file .env and put all environment variables with your own
